@@ -1,10 +1,35 @@
 package ec.edu.com.pedidos.domain.model;
 
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "facturas")
 public class Factura {
+
+    @Id
+    @SequenceGenerator(name = "factura_seq", sequenceName = "factura_seq_db", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "factura_seq")
+    @Column(name = "fac_id")
     private Integer id;
+
+    @Column(name = "fac_pedidoId")
     private Integer pedidoId;
+
+    @Column(name = "fac_numFactura")
     private String numeroFactura;
-    private String fechaEmision;
+
+    @Column(name = "fac_fechaEmision")
+    private LocalDate fechaEmision;
+
+    @Column(name = "fac_total")
     private Double total;
 
     public Integer getId() {
@@ -31,11 +56,11 @@ public class Factura {
         this.numeroFactura = numeroFactura;
     }
 
-    public String getFechaEmision() {
+    public LocalDate getFechaEmision() {
         return fechaEmision;
     }
 
-    public void setFechaEmision(String fechaEmision) {
+    public void setFechaEmision(LocalDate fechaEmision) {
         this.fechaEmision = fechaEmision;
     }
 
