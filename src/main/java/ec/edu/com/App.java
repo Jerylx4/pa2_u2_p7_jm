@@ -23,12 +23,29 @@ public class App implements QuarkusApplication {
     public int run(String... args) throws Exception {
         System.out.println("Inicio de la app");
 
+        //Create
         Pedido p1 = new Pedido();
         p1.setPrecio(100.0);
-        p1.setProducto("Prueba");
+        p1.setProducto("Producto de prueba 3");
         p1.setFecha(LocalDateTime.now());
+        this.pS.guardar(p1);
+        
+        
+        //Read
+        Pedido pedido = this.pS.buscarPedido(3);
+        System.out.println("Pedido encontrado:" + pedido);
+        
+        //Update 
+        pedido.setPrecio(200.00);
+        this.pS.actualizar(pedido);
+        
+        Pedido pedido2 = this.pS.buscarPedido(3);
+        System.out.println("Pedido actualizado:" + pedido2);
 
-        pS.guardar(p1);        return 0;
+        //Delete
+        this.pS.eliminar(3);
+
+        return 0;
     }
 
 
