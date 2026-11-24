@@ -1,5 +1,8 @@
 package ec.edu.com.pedidos.domain.repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import ec.edu.com.pedidos.domain.model.Pedido;
 
 public interface PedidoRepository {
@@ -7,7 +10,11 @@ public interface PedidoRepository {
     public void create(Pedido pedido);
 
     //read por id
-    public Pedido read(Integer id);
+    public Optional<Pedido> read(Integer id);
+
+    public Optional<Pedido> readByNumber(String numero);
+
+    public List<Pedido> readAll();
 
     //update
     public void update(Pedido pedido);

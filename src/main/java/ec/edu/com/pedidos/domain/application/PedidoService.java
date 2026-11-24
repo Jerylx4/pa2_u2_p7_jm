@@ -1,5 +1,7 @@
 package ec.edu.com.pedidos.domain.application;
 
+import java.util.Optional;
+
 import ec.edu.com.pedidos.domain.model.Pedido;
 import ec.edu.com.pedidos.domain.repository.PedidoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -17,7 +19,7 @@ public class PedidoService {
         this.pedidoRepository.create(pedido);
     }
 
-    public Pedido buscarPedido(Integer id){
+    public Optional<Pedido> buscarPedido(Integer id){
         return this.pedidoRepository.read(id);
     }
 
@@ -27,5 +29,9 @@ public class PedidoService {
 
     public void eliminar(Integer id){
         this.pedidoRepository.delete(id);
+    }
+
+    public Optional<Pedido> buscarPorNumero(String numero){
+        return this.pedidoRepository.readByNumber(numero);
     }
 }
