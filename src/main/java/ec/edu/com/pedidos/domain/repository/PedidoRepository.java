@@ -16,6 +16,10 @@ public interface PedidoRepository {
 
     public List<Pedido> readAll();
 
+    public Optional<Pedido> readByNumberNative(String numero);
+
+    public List<Pedido> readAllNative();
+
     //update
     public void update(Pedido pedido);
 

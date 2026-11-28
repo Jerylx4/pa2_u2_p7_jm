@@ -1,5 +1,6 @@
 package ec.edu.com.pedidos.domain.application;
 
+import java.util.List;
 import java.util.Optional;
 
 import ec.edu.com.pedidos.domain.model.Pedido;
@@ -33,5 +34,17 @@ public class PedidoService {
 
     public Optional<Pedido> buscarPorNumero(String numero){
         return this.pedidoRepository.readByNumber(numero);
+    }
+
+    public List<Pedido> buscarTodos(){
+        return this.pedidoRepository.readAll();
+    }
+
+    public Optional<Pedido> buscarNumeroNative(String numero){
+        return this.pedidoRepository.readByNumberNative(numero);
+    }
+
+    public List<Pedido> buscarTodosNative(){
+       return this.pedidoRepository.readAllNative();
     }
 }
